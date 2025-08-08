@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dynamic Media Gallery</title>
+<style>
+  body { font-family: sans-serif; background: #111; color: #fff; text-align: center; }
+  .media-container { margin: 20px auto; max-width: 800px; }
+  video, audio, img { width: 100%; margin: 10px 0; border-radius: 8px; }
+  h2 { margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h1>My Dynamic Media Gallery</h1>
+<div class="media-container" id="mediaList"></div>
+
+<script>
+fetch('playlist.json')
+  .then(response => response.json())
+  .then(data => {
+    const mediaList = document.getElementById('mediaList');
+    data.forEach(item => {
+      const title = document.createElement('h2');
+      title.textContent = item.title || '';
+      mediaList.appendChild(title);
+
+      let el;
+      if (item.type === 'video') {
+        el = document.createElement('video');
+        el.controls = true;
+        el.src = item.src;
+      } else if (item.type === 'audio') {
+        el = document.createElement('audio');
+        el.controls = true;
+        el.src = item.src;
+      } else if (item.type === 'image') {
+        el = document.createElement('img');
+        el.src = item.src;
+        el.alt = item.title || '';
+      }
+      mediaList.appendChild(el);
+    });
+  });
+</script>
+
+</body>
+</html>

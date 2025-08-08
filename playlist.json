@@ -1,0 +1,7 @@
+[
+  { "type": "audio", "src": "media/song1.mp3", "title": "Song 1" },
+  { "type": "audio", "src": "media/song2.mp3", "title": "Song 2" },
+  { "type": "video", "src": "media/video1.mp4", "title": "My Video" },
+  { "type": "image", "src": "media/photo1.jpg", "title": "Beautiful View" },
+  { "type": "image", "src": "media/photo2.png", "title": "Funny Cat" }
+]
